@@ -40,7 +40,6 @@ public class AutorService {
             System.out.println(e.getMessage());
         }
         return null;
-        
     }
 //    public Libro buscarLibroPorTitulo(String titulo){
 //        try {
