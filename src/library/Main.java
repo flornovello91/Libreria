@@ -1,17 +1,19 @@
 
 package library;
 
+import java.awt.AWTException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import library.service.LibroService;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AWTException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("LibraryPU");
         EntityManager em = emf.createEntityManager();
         //mandarLibros();
-        
+        MenuOpciones menu = new MenuOpciones();
+        menu.menu();
     }
     public static void mandarLibros(){
         LibroService libro1 = new LibroService();

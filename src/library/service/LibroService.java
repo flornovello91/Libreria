@@ -1,5 +1,6 @@
 package library.service;
 
+import java.util.Scanner;
 import library.entidad.Autor;
 import library.entidad.Editorial;
 import library.entidad.Libro;
@@ -56,6 +57,37 @@ public class LibroService {
             System.out.println("No se creó el libro. "+e.getMessage());
         }
     }
+    public Libro buscarLibroPorTitulo(String titulo){
+        try {
+            if (titulo == null||titulo.trim().isEmpty()){
+                throw new Exception ("Debe ingresar el titulo del libro.");
+            }
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            Libro libro = libroDAO.buscarLibroPorTitulo(titulo);
+            System.out.printf("%-15s%-15s%-30s%-25s\n","NOMBRE","ISBN","AUTOR","EDITORIAL");
+            System.out.println(libro);
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            return libro;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    /*
+    public Usuario buscarUsuarioPorId(String id) throws Exception {
+
+        try {
+            //Validamos
+            if (id == null) {
+                throw new Exception("Debe indicar el id del usuario");
+            }
+            Usuario usuario = daoUsuario.buscarUsuarioPorId(id);
+            return usuario;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    */
 }
 /*
 
