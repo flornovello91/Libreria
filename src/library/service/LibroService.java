@@ -73,6 +73,9 @@ public class LibroService {
             return null;
         }
     }
+    public void mostrando(){
+        
+    }
     /*
     public Usuario buscarUsuarioPorId(String id) throws Exception {
 
