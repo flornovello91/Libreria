@@ -14,4 +14,22 @@ public class AutorDAO {
         em.persist(autor);       
         em.getTransaction().commit();
     }
+    public Autor buscarAutorPorNombre(String nombre){
+        Autor autor = (Autor) em.createQuery("SELECT d "
+                + " FROM Autor d"
+                + " WHERE d.nombreAutor LIKE :nombre")
+                .setParameter("nombre", nombre).
+                getSingleResult();
+        return autor;
+    }
+    /*
+    public Libro buscarLibroPorTitulo(String titulo) throws Exception {
+        Libro libro = (Libro) em.createQuery("SELECT d "
+                + " FROM Libro d"
+                + " WHERE d.titulo LIKE :titulo")
+                .setParameter("titulo", titulo).
+                getSingleResult();
+        return libro;
+    }
+    */
 }

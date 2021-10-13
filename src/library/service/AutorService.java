@@ -12,7 +12,6 @@ public class AutorService {
         this.autorDAO = new AutorDAO ();
         this.libroDAO = new LibroDAO();
     }
-    
     public Autor crearAutor(String nombreAutor) throws Exception{
         Autor autor = new Autor();
         try {
@@ -27,4 +26,35 @@ public class AutorService {
         }
         return autor;
     }
+    public Autor buscarAutorPorNombre(String nombreAutor) throws Exception{
+        try {
+            if (nombreAutor == null||nombreAutor.trim().isEmpty()){
+                throw new Exception ("Debe ingresar el nombre del autor.");
+            }
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            Autor autor = autorDAO.buscarAutorPorNombre(nombreAutor);
+            System.out.printf("%-15s%-15s\n","NOMBRE","ID");
+            System.out.println(autor);
+            System.out.println("-----------------------------------------------------------------------------------------------");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+//    public Libro buscarLibroPorTitulo(String titulo){
+//        try {
+//            if (titulo == null||titulo.trim().isEmpty()){
+//                throw new Exception ("Debe ingresar el titulo del libro.");
+//            }
+//            System.out.println("-----------------------------------------------------------------------------------------------");
+//            Libro libro = libroDAO.buscarLibroPorTitulo(titulo);
+//            System.out.printf("%-15s%-15s%-30s%-25s\n","NOMBRE","ISBN","AUTOR","EDITORIAL");
+//            System.out.println(libro);
+//            System.out.println("-----------------------------------------------------------------------------------------------");
+//            return libro;
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
+//    }
 }
