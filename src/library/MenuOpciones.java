@@ -4,26 +4,31 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import library.service.AutorService;
 import library.service.LibroService;
 
 public class MenuOpciones {
     private final Scanner sc ;
     private final LibroService ls;
+    private final AutorService as;
 
     public MenuOpciones() {
         this.sc = new Scanner (System.in).useDelimiter("\n");
         this.ls = new LibroService();
+        this.as = new AutorService();
     }
    
-    public void menu() throws AWTException{
+    public void menu() throws AWTException, Exception{
         int rta=0;
         do{
             try {
                 System.out.println("\n<<<<MENÚ>>>>\t");
-                System.out.println("1-LIBRO\t");
-                System.out.println("2-AUTOR\t");
-                System.out.println("3-EDITORIAL\t");
-                System.out.println("0-SALIR\t");
+                System.out.println("\n******************");
+                System.out.println("** 1- LIBRO **\t");
+                System.out.println("** 2- AUTOR **\t");
+                System.out.println("** 3- EDITORIAL **\t");
+                System.out.println("** 0- SALIR **\t");
+                System.out.println("******************");
                 int rta1 = sc.nextInt();
                 switch (rta1) {
                     case 1:
@@ -49,11 +54,13 @@ public class MenuOpciones {
         String rta;
         do{
             try {
+                System.out.println("\n**************************");
                 System.out.println("1-MOSTRAR LIBROS\t");
                 System.out.println("2-ELIMINAR LIBRO\t");
                 System.out.println("3-EDITAR LIBRO\t");
                 System.out.println("4-BUSCAR LIBRO\t");
                 System.out.println("5-VOLVER AL MENÚ ANTERIOR\t");
+                System.out.println("\n**************************");
                 int rta2 = sc.nextInt();
                 switch (rta2) {
                     case 1 :
@@ -64,10 +71,12 @@ public class MenuOpciones {
                         break;
                     case 4 :
                         try {
-                            System.out.println("1-BUSCAR POR TITULO\t");
-                            System.out.println("2-BUSCAR POR ISBN\t");
-                            System.out.println("3-BUSCAR POR AUTOR\t");
-                            System.out.println("4-BUSCAR POR EDITORIAL\t");
+                            System.out.println("\n**************************");
+                            System.out.println("1- BUSCAR POR TITULO\t");
+                            System.out.println("2- BUSCAR POR ISBN\t");
+                            System.out.println("3- BUSCAR POR AUTOR\t");
+                            System.out.println("4- BUSCAR POR EDITORIAL\t");
+                            System.out.println("\n**************************");
                             int rta3 = sc.nextInt();
                             switch (rta3) {
                                 case 1:
@@ -95,13 +104,6 @@ public class MenuOpciones {
             limpiarPantalla();
         }while("SI".equals(rta));
     }
-    /*
-    System.out.println("Desea realizar una nueva consulta o gestion ???:SI/NO");
-            respuesta = sc.next();
-            respuesta = respuesta.toUpperCase();
-            limpiarPantalla();
-        } while ("SI".equals(respuesta));
-    */
     public void menuEditorial() throws AWTException{
         int rta = 0;
         do{
@@ -118,8 +120,31 @@ public class MenuOpciones {
             limpiarPantalla();
         }while(rta!=5);
     }
-    public void menuAutor (){
-        
+    public void menuAutor () throws AWTException, Exception{
+        String rta;
+        do{
+            try {
+                System.out.println("\n**************************");
+                System.out.println("1- MOSTRAR AUTORES\t");
+                System.out.println("2- BUSCAR AUTOR POR NOMBRE\t");
+                System.out.println("5- VOLVER AL MENÚ ANTERIOR\t");
+                System.out.println("\n**************************");
+                int rta2 = sc.nextInt();
+                switch (rta2) {
+                    case 1 :
+                        break;
+                    case 2 :
+                        as.buscarAutorPorNombre(ingresoAutor());
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Ingreso inválido." + e.getMessage());
+            }
+            System.out.println("Desea realizar una nueva consulta o gestion ???:SI/NO");
+            rta = sc.next();
+            rta = rta.toUpperCase();
+            limpiarPantalla();
+        }while("SI".equals(rta));
     }
     public void limpiarPantalla() throws AWTException {
         //Dejo esre metodo para ir borrando la consola.. y que no sea un desorden.
@@ -137,7 +162,15 @@ public class MenuOpciones {
         String titulo = sc.next();
         return titulo;
     }
+    public String ingresoAutor(){
+        Scanner sc = new Scanner (System.in).useDelimiter("\n");
+        System.out.println("Ingrese el nombre del autor a buscar : ");
+        String nombreAutor = sc.next();
+        return nombreAutor;
+    }
 }
+
+
 /*
 do {
             System.out.println("Seleccione la opción:");

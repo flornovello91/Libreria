@@ -9,7 +9,6 @@ public class EditorialService {
     public EditorialService(){
         this.editorialDAO = new EditorialDAO();
     }
-    
     public Editorial crearEditorial (String nombreEditorial){
         Editorial editorial = new Editorial ();
         try {

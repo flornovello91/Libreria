@@ -73,21 +73,6 @@ public class LibroService {
             return null;
         }
     }
-    /*
-    public Usuario buscarUsuarioPorId(String id) throws Exception {
-
-        try {
-            //Validamos
-            if (id == null) {
-                throw new Exception("Debe indicar el id del usuario");
-            }
-            Usuario usuario = daoUsuario.buscarUsuarioPorId(id);
-            return usuario;
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-    */
 }
 /*
 

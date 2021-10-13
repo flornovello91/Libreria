@@ -49,7 +49,7 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor{" + "id=" + id + ", nombreAutor=" + nombreAutor + ", alta=" + alta + '}';
+        return String.format("%-15s%-15s\n",nombreAutor,id);
     }
     
     

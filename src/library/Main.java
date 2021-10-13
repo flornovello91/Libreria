@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import library.service.LibroService;
 
 public class Main {
-    public static void main(String[] args) throws AWTException {
+    public static void main(String[] args) throws AWTException, Exception {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("LibraryPU");
         EntityManager em = emf.createEntityManager();
         //mandarLibros();
