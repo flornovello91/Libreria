@@ -119,8 +119,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro{" + "id=" + id + ", isbn=" + isbn + ", titulo=" + titulo + ", anio=" + anio + ", ejemplares=" + ejemplares + ", ejemplaresPrestados=" + ejemplaresPrestados + ", ejemplaresRestantes=" + ejemplaresRestantes + ", alta=" + alta + ", autor=" + autor + ", editorial=" + editorial + '}';
+        return String.format("%-15s%-15s%-30s%-25s\n",titulo,isbn,autor.getNombreAutor(),editorial.getNombreEditorial());
     }
-    
     
 }
