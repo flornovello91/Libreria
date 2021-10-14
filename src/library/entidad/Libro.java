@@ -119,7 +119,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return String.format("%-15s%-15s%-30s%-25s\n",titulo,isbn,autor.getNombreAutor(),editorial.getNombreEditorial());
+        return String.format("%-30s%-20s%-30s%-25s\n",titulo,isbn,autor.getNombreAutor(),editorial.getNombreEditorial());
     }
     
 }

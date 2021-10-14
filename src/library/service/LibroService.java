@@ -64,7 +64,23 @@ public class LibroService {
             }
             System.out.println("-----------------------------------------------------------------------------------------------");
             Libro libro = libroDAO.buscarLibroPorTitulo(titulo);
-            System.out.printf("%-15s%-15s%-30s%-25s\n","NOMBRE","ISBN","AUTOR","EDITORIAL");
+            System.out.printf("%-30s%-20s%-30s%-25s\n","NOMBRE","ISBN","AUTOR","EDITORIAL");
+            System.out.println(libro);
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            return libro;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    public Libro buscarLibroPorISBN(Long isbn){
+        try {
+            if (isbn == null){
+                throw new Exception ("Debe ingresar el ISBN del libro.");
+            }
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            Libro libro = libroDAO.buscarLibroPorISBN(isbn);    
+            System.out.printf("%-30s%-20s%-30s%-25s\n","NOMBRE","ISBN","AUTOR","EDITORIAL");
             System.out.println(libro);
             System.out.println("-----------------------------------------------------------------------------------------------");
             return libro;

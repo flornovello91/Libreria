@@ -19,7 +19,7 @@ public class MenuOpciones {
     }
    
     public void menu() throws AWTException, Exception{
-        int rta=0;
+        String respuesta;
         do{
             try {
                 System.out.println("\n<<<<MENÚ>>>>\t");
@@ -40,6 +40,8 @@ public class MenuOpciones {
                     case 3:
                         menuEditorial();
                         break;
+                    case 0 :
+                        break;
                     default:
                         System.out.println("Ingreso inválido.");
                         menu();
@@ -47,11 +49,14 @@ public class MenuOpciones {
             }catch (InputMismatchException e){
                 System.out.println("Ingreso inválido."+e.getMessage());
             }
+            System.out.println("Desea realizar una nueva consulta o gestion ???:SI/NO");
+            respuesta = sc.next();
+            respuesta = respuesta.toUpperCase();
             limpiarPantalla();
-        }while(rta!=0);    
+        } while ("SI".equals(respuesta));
     }
     public void menuLibro() throws AWTException{
-        String rta;
+        String respuesta;
         do{
             try {
                 System.out.println("\n**************************");
@@ -71,6 +76,7 @@ public class MenuOpciones {
                         break;
                     case 4 :
                         try {
+                            limpiarPantalla();
                             System.out.println("\n**************************");
                             System.out.println("1- BUSCAR POR TITULO\t");
                             System.out.println("2- BUSCAR POR ISBN\t");
@@ -80,9 +86,12 @@ public class MenuOpciones {
                             int rta3 = sc.nextInt();
                             switch (rta3) {
                                 case 1:
+                                    limpiarPantalla();
                                     ls.buscarLibroPorTitulo(ingresoTitulo());
                                     break;
                                 case 2:
+                                    limpiarPantalla();
+                                    ls.buscarLibroPorISBN(ingresoISBN());
                                     break;
                                 case 3:
                                     break;
@@ -93,19 +102,21 @@ public class MenuOpciones {
                         }catch (Exception e){
                             System.out.println(e.getMessage());
                         }
-                    break;
+                        break;
+                    case 5 :
+                        break;
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ingreso inválido." + e.getMessage());
             }
             System.out.println("Desea realizar una nueva consulta o gestion ???:SI/NO");
-            rta = sc.next();
-            rta = rta.toUpperCase();
+            respuesta = sc.next();
+            respuesta = respuesta.toUpperCase();
             limpiarPantalla();
-        }while("SI".equals(rta));
+        } while ("SI".equals(respuesta));
     }
     public void menuEditorial() throws AWTException{
-        int rta = 0;
+        String respuesta;
         do{
             try {
                 System.out.println("\n1-MOSTRAR LIBROS\t");
@@ -117,11 +128,14 @@ public class MenuOpciones {
             } catch (InputMismatchException e) {
                 System.out.println("Ingreso inválido." + e.getMessage());
             }
+            System.out.println("Desea realizar una nueva consulta o gestion ???:SI/NO");
+            respuesta = sc.next();
+            respuesta = respuesta.toUpperCase();
             limpiarPantalla();
-        }while(rta!=5);
+        }while ("SI".equals(respuesta));
     }
     public void menuAutor () throws AWTException, Exception{
-        String rta;
+        String respuesta;
         do{
             try {
                 System.out.println("\n**************************");
@@ -132,8 +146,10 @@ public class MenuOpciones {
                 int rta2 = sc.nextInt();
                 switch (rta2) {
                     case 1 :
+                        //limpiarPantalla();
                         break;
                     case 2 :
+                        limpiarPantalla();
                         as.buscarAutorPorNombre(ingresoAutor());
                         break;
                 }
@@ -141,10 +157,10 @@ public class MenuOpciones {
                 System.out.println("Ingreso inválido." + e.getMessage());
             }
             System.out.println("Desea realizar una nueva consulta o gestion ???:SI/NO");
-            rta = sc.next();
-            rta = rta.toUpperCase();
+            respuesta = sc.next();
+            respuesta = respuesta.toUpperCase();
             limpiarPantalla();
-        }while("SI".equals(rta));
+        } while ("SI".equals(respuesta));
     }
     public void limpiarPantalla() throws AWTException {
         //Dejo esre metodo para ir borrando la consola.. y que no sea un desorden.
@@ -161,6 +177,12 @@ public class MenuOpciones {
         System.out.println("Ingrese el titulo del libro que busca : ");
         String titulo = sc.next();
         return titulo;
+    }
+    public long ingresoISBN(){
+        Scanner sc = new Scanner (System.in).useDelimiter("\n");
+        System.out.println("Ingrese el ISBN del libro que busca : ");
+        Long isbn = sc.nextLong();
+        return isbn;
     }
     public String ingresoAutor(){
         Scanner sc = new Scanner (System.in).useDelimiter("\n");

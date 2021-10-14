@@ -22,6 +22,14 @@ public class LibroDAO {
                 getSingleResult();
         return libro;
     }
+    public Libro buscarLibroPorISBN(Long isbn) throws Exception {
+        Libro libro = (Libro) em.createQuery("SELECT d "
+                + " FROM Libro d"
+                + " WHERE d.isbn LIKE :isbn")
+                .setParameter("isbn", isbn).
+                getSingleResult();
+        return libro;
+    }
 }
 /*
 public void guardarUsuario(Usuario usuario) throws Exception {
